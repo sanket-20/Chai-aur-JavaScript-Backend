@@ -3,16 +3,19 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 4000;
 
-app.get('/', (req, res) => {
-  res.send('Server is ready');
-})
 
-app.get('/twitter', (req, res) => {
-    res.send('this is twitter page')
-})
+app.use(express.static('dist'));
+
+// app.get('/', (req, res) => {
+//   res.send('Server is ready');
+// })
+
+// app.get('/twitter', (req, res) => {
+//     res.send('this is twitter page')
+// })
 
 // get a list of 5 jokes
-app.get('/jokes', (req, res) => {
+app.get('/api/jokes', (req, res) => {
     const jokes = [
         {
             id: 1,
@@ -44,5 +47,5 @@ app.get('/jokes', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server is listening on port ${port}`)
 })
